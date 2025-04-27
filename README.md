@@ -2,7 +2,7 @@
 
 ### PROJETO
 
-![img](https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/ilstr_fabrica.jpg =100x200 "Ilustração fábrica")
+![img](https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/ilstr_fabrica.jpg=100x200 "Ilustração fábrica")
 
 O projeto consiste no sistema embarcado composto por um módulo de chão de fábrica que realiza o controle das serras para o corte da madeira, sensoriamento dos parametros de operação como temperatura e nivel do tanque de oléo e a segurança dos operadores. Além do módulo de chão de fábrica o sistema possui um módulo supervisor que se comunica com o chão de fábrica, obtendo informações da operação e controlando a produção podendo ajustar a velocidade das serras e a parada da produção.
 
