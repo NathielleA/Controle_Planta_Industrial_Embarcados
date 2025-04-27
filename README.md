@@ -66,3 +66,12 @@ Foram utilizados dois arduinos nano para implementação do sistemas embaracdo. 
 
 
 <img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/pinagem_nano.png" alt="Pinagem do arduino nano">
+
+O ATmega328P possui varios recursos como GPIO programável, tratamento de interrupções, modulação PWM, temporizadores e contadores, conversor análogico digital entre outros que podem ser consultados no datasheet do [Atmega328P](https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/recursos/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
+
+A figura abaixo representa o hardware do módulo supervisor implementado no simulador wokwi, o supervisor possui como interfaces dois potenciomêtros para ajuste da velocidade das serras, botão de parada da produção. Uma interface com o monitor serial é utilizada para exibição de dados e [FALTA COMUNICAÇÃO].
+
+
+<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/supervisor.png" alt="Pinagem do arduino nano">
+
+A figura abaixo representa o hardware do módulo de chão de fábrica implementado no simulador wokwi, o chão de fábrica possui o sensores para observação da produção que são: sensor de temperatura, sensor de inclinação, sensor de presença, sensor de nível de oléo, os motroles para controle da serra de coret horizontal e vertical, motor do ajuste de inclinação e as interfaces para operadores: botão de parada da produção, leds de operação do sistema, buzzer para alarme e display para exibição de blocos cortados.
