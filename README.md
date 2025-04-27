@@ -9,7 +9,7 @@ O projeto consiste no sistema embarcado composto por um módulo de chão de fáb
 Este projeto vai ser desenvolvido utilizando como dispositivo microcontrolador o Atmega328p disponivél no arduino nano. A progamação será feita em linguagem C com programação a nível de registradores para se obter a compreeensão da arquitetura de microcontroladores e desenvolvimento de aplicações microcontroladas.
 
 
-<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/dg_blc_1.png" alt="descrição de blocos de alto nivel do sistema" width="300" height="200">
+<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/dg_blc_1.png" alt="descrição de blocos de alto nivel do sistema" width="500" height="700">
 
 
 Para simulações foi utilizado o simulador [wokwi](https://wokwi.com/) que disponibiliza o arduino Nano e um conjunto de sensores e outros recursos úteis ao projeto. Além das simulações o sistema foi implementado em bancada no laboratorio.
