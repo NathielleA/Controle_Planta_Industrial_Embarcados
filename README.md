@@ -2,15 +2,13 @@
 
 ### PROJETO
 
-![img](https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/ilstr_fabrica.jpg  "Ilustração fábrica")
+![img](https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/ilstr_fabrica.jpg "Ilustração fábrica")
 
 O projeto consiste no sistema embarcado composto por um módulo de chão de fábrica que realiza o controle das serras para o corte da madeira, sensoriamento dos parametros de operação como temperatura e nivel do tanque de oléo e a segurança dos operadores. Além do módulo de chão de fábrica o sistema possui um módulo supervisor que se comunica com o chão de fábrica, obtendo informações da operação e controlando a produção podendo ajustar a velocidade das serras e a parada da produção.
 
 Este projeto vai ser desenvolvido utilizando como dispositivo microcontrolador o Atmega328p disponivél no arduino nano. A progamação será feita em linguagem C com programação a nível de registradores para se obter a compreeensão da arquitetura de microcontroladores e desenvolvimento de aplicações microcontroladas.
 
-
-<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/dg_blc_1.png" alt="descrição de blocos de alto nivel do sistema" width="500" height="700">
-
+<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/dg_blc_1.png" alt="descrição de blocos de alto nivel do sistema">
 
 Para simulações foi utilizado o simulador [wokwi](https://wokwi.com/) que disponibiliza o arduino Nano e um conjunto de sensores e outros recursos úteis ao projeto. Além das simulações o sistema foi implementado em bancada no laboratorio.
 
@@ -59,3 +57,12 @@ Abaixo seguem os requisitos solicitados para o sistemas embarcado com a divisão
 * Enquanto a produção estiver ocorrendo de forma prevista, o LED verde deverá ficar acesso, quando houver parada, deverá ser desligado;
 * O sensor de nível deverá verificar periodicamente o nível do tanque de óleo utilizado para a finalização do bloco, alertando caso o tanque
   esteja no nível do limite superior ou em nível crítico baixo.
+
+---
+
+### ESPECIFICAÇÃO DO HARDAWARE
+
+Foram utilizados dois arduinos nano para implementação do sistemas embaracdo. O arduino nano possui o microcontrolador Atmega328P um microcontrolador 8 bits com arquitetura AVR, na imagem abaixo tem-se a descrição dos pinos do arduino nano suas funções e os pinos do Atmega328P.
+
+
+<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/pinagem_nano.png" alt="Pinagem do arduino nano">
