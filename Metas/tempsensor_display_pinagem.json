@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "author": "Nathielle Alves",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "nano", "top": -24, "left": 57.1, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 50.6,
+      "left": -39,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": -118.98,
+      "left": -114.08,
+      "attrs": { "digits": "4" }
+    }
+  ],
+  "connections": [
+    [ "ntc1:GND", "nano:GND.1", "black", [ "h0" ] ],
+    [ "ntc1:VCC", "nano:5V", "red", [ "h0" ] ],
+    [ "ntc1:OUT", "nano:A0", "green", [ "h0" ] ],
+    [ "sevseg1:DIG1", "nano:10", "green", [ "h144.01", "v96" ] ],
+    [ "sevseg1:DIG2", "nano:9", "green", [ "h124.8", "v96" ] ],
+    [ "sevseg1:A", "nano:2", "green", [ "h211.2", "v96" ] ],
+    [ "sevseg1:B", "nano:3", "green", [ "h163.2", "v96" ] ],
+    [ "nano:4", "sevseg1:C", "green", [ "v0" ] ],
+    [ "nano:5", "sevseg1:D", "green", [ "v0" ] ],
+    [ "nano:6", "sevseg1:E", "green", [ "v0" ] ],
+    [ "nano:7", "sevseg1:F", "green", [ "v0" ] ],
+    [ "nano:8", "sevseg1:G", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
