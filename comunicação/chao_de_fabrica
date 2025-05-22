@@ -1,0 +1,49 @@
+// === Arduino Chão de Fábrica ===
+#include <Wire.h>
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
+
+#define F_CPU 16000000UL
+#define TRUE 1
+#define FALSE 0
+
+int concat_msg = 0;
+
+// UART Functions
+void uart_init() {
+  uint16_t ubrr = F_CPU / 16 / 9600 - 1;
+  UBRR0H = (ubrr >> 8);
+  UBRR0L = ubrr;
+  UCSR0B = (1 << TXEN0);
+  UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
+}
+
+void uart_transmit(char data) {
+  while (!(UCSR0A & (1 << UDRE0)));
+  UDR0 = data;
+}
+
+void uart_print(const char* str) {
+  while (*str) uart_transmit(*str++);
+}
+
+void setup() {
+  Wire.begin(0x10); // Endereço do escravo
+  Wire.onRequest(sendMessage);
+  uart_init();
+  uart_print("Chão de Fábrica pronto\n");
+}
+
+void loop() {
+  // Nada no loop, responde via onRequest
+}
+
+void sendMessage() {
+  String msg = "Msg do Chao: ";
+  msg += concat_msg;
+  concat_msg++;
+  for (size_t i = 0; i < msg.length(); i++) {
+    Wire.write(msg[i]);
+  }
+} // Fim do Arduino escravo
