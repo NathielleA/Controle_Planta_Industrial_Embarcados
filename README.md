@@ -76,10 +76,46 @@ A figura abaixo representa o hardware do módulo de chão de fábrica implementa
 
 ### ESPECIFICAÇÃO DO SOFTWARE
 
-O software foi desenvolvido em linguagem C utilizando a biblioteca AVR para manipulação direta dos registradores do microcontrolador ATmega328P. A programação foi feita a nível de registradores para proporcionar maior controle sobre o hardware e otimizar o desempenho do sistema. Além disso, foi utilizada a biblioteca Wire.h para comunicação I2C.
+O software foi desenvolvido em linguagem C utilizando a biblioteca AVR para manipulação direta dos registradores do microcontrolador ATmega328P. Além disso, foi utilizada a biblioteca Wire.h para comunicação I2C.
 
-O sistema é dividido em dois módulos principais: Supervisor e Chão de Fábrica, cada um com funcionalidades específicas, previamente descritas acima. 
+1. Biblioteca AVR:
+A biblioteca AVR é um conjunto de ferramentas e cabeçalhos fornecidos pela Atmel (agora parte da Microchip) para programar microcontroladores AVR, como o ATmega328P. Ela permite acesso direto aos registradores do microcontrolador, o que é essencial para configurações de baixo nível, como manipulação de portas digitais, temporizadores, interrupções e outros periféricos internos.
 
+* Exemplo de uso: Configurar um pino como saída e alternar seu estado:
+
+// filepath: /path/to/main.c
+#include <avr/io.h>
+
+int main(void) {
+    DDRB |= (1 << PB0); // Configura o pino PB0 como saída
+    while (1) {
+        PORTB ^= (1 << PB0); // Alterna o estado do pino PB0
+    }
+}
+
+2. Biblioteca Wire.h:
+A biblioteca Wire.h é usada para comunicação I2C (Inter-Integrated Circuit), um protocolo que permite a comunicação entre dispositivos em um barramento compartilhado. No ATmega328P, ela abstrai a complexidade de configurar os registradores do hardware TWI (Two-Wire Interface), facilitando a comunicação com sensores, displays e outros dispositivos compatíveis com I2C.
+
+* Exemplo de uso: Comunicação com um sensor I2C:
+
+// filepath: /path/to/main.c
+#include <Wire.h>
+
+void setup() {
+    Wire.begin(); // Inicializa o barramento I2C
+    Wire.beginTransmission(0x68); // Endereço do dispositivo I2C
+    Wire.write(0x00); // Envia um comando ou endereço de registro
+    Wire.endTransmission();
+}
+
+void loop() {
+    Wire.requestFrom(0x68, 2); // Solicita 2 bytes do dispositivo
+    while (Wire.available()) {
+        int data = Wire.read(); // Lê os dados recebidos
+    }
+}
+
+O sistema é dividido em dois módulos principais: Supervisor e Chão de Fábrica, cada um com funcionalidades específicas, previamente descritas acima.
 
 
 ### ARQUITETURA DO SISTEMA
@@ -99,3 +135,22 @@ O sistema foi projetado com uma arquitetura modular, onde cada módulo possui re
 O diagrama abaixo ilustra a interação entre os módulos Supervisor e Chão de Fábrica, bem como os sensores, atuadores e interfaces de comunicação:
 
 <img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/dg_blc_1.png" alt="descrição de blocos de alto nivel do sistema">
+
+
+(REVISAR ISSO TUDO A BAIXO E VER SE TEM REPETIÇÕES E AJUSTAR)
+
+TESTES E SIMULAÇÕES
+Para validar o funcionamento do sistema, foram realizados testes e simulações utilizando as plataformas Wokwi e Tinkercad. Essas ferramentas permitiram simular o comportamento dos sensores, motores e comunicação I2C, garantindo que o sistema atendesse aos requisitos especificados.
+
+Além das simulações, o sistema foi implementado em bancada no laboratório, utilizando dois Arduinos Nano e os componentes descritos na especificação de hardware. Os testes em bancada confirmaram a funcionalidade do sistema em condições reais.
+
+CONCLUSÃO
+O projeto Controle Planta Industrial Embarcados demonstrou a viabilidade de implementar um sistema embarcado para controle de produção e segurança em um ambiente industrial. A utilização de programação a nível de registradores proporcionou maior controle sobre o hardware, enquanto a comunicação I2C garantiu a integração eficiente entre os módulos Supervisor e Chão de Fábrica.
+
+O sistema atendeu a todos os requisitos especificados, sendo capaz de:
+
+Monitorar e controlar a produção de forma segura.
+Ajustar dinamicamente as velocidades dos motores.
+Interromper a produção em condições críticas.
+Exibir informações em tempo real no monitor serial e nos displays de 7 segmentos.
+Este projeto pode ser expandido para incluir novos sensores, atuadores e funcionalidades, como integração com sistemas de supervisão remota ou armazenamento de dados em nuvem.
