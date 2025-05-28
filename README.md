@@ -6,11 +6,9 @@
 
 O projeto consiste no sistema embarcado composto por um módulo de chão de fábrica que realiza o controle das serras para o corte da madeira, sensoriamento dos parametros de operação como temperatura e nivel do tanque de oléo e a segurança dos operadores. Além do módulo de chão de fábrica o sistema possui um módulo supervisor que se comunica com o chão de fábrica, obtendo informações da operação e controlando a produção podendo ajustar a velocidade das serras e a parada da produção.
 
-Este projeto vai ser desenvolvido utilizando como dispositivo microcontrolador o Atmega328p disponivél no arduino nano. A progamação será feita em linguagem C com programação a nível de registradores para se obter a compreeensão da arquitetura de microcontroladores e desenvolvimento de aplicações microcontroladas.
+Este projeto vai ser desenvolvido utilizando como dispositivo microcontrolador o Atmega328p disponível no arduino nano. A progamação será feita em linguagem C com programação a nível de registradores para se obter a compreeensão da arquitetura de microcontroladores e desenvolvimento de aplicações microcontroladas.
 
-<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/dg_blc_1.png" alt="descrição de blocos de alto nivel do sistema">
-
-Para simulações foi utilizado o simulador [wokwi](https://wokwi.com/) que disponibiliza o arduino Nano e um conjunto de sensores e outros recursos úteis ao projeto. Além das simulações o sistema foi implementado em bancada no laboratorio.
+Para simulações foi utilizado o simulador [wokwi](https://wokwi.com/) que disponibiliza o arduino Nano e um conjunto de sensores e outros recursos úteis ao projeto. Também foi utilizado para simulações o [Tinkercad](https://www.tinkercad.com/). Além das simulações o sistema foi implementado em bancada no laboratorio.
 
 ---
 
@@ -69,9 +67,35 @@ Foram utilizados dois arduinos nano para implementação do sistemas embaracdo. 
 
 O ATmega328P possui varios recursos como GPIO programável, tratamento de interrupções, modulação PWM, temporizadores e contadores, conversor análogico digital entre outros que podem ser consultados no datasheet do [Atmega328P](https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/recursos/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf).
 
-A figura abaixo representa o hardware do módulo supervisor implementado no simulador wokwi, o supervisor possui como interfaces dois potenciomêtros para ajuste da velocidade das serras, botão de parada da produção. Uma interface com o monitor serial é utilizada para exibição de dados e [FALTA COMUNICAÇÃO].
+A figura abaixo representa o hardware do módulo supervisor implementado no simulador wokwi, o supervisor possui como interfaces dois potenciomêtros para ajuste da velocidade das serras, botão de parada da produção. Uma interface com o monitor serial é utilizada para exibição de dados.
 
 
 <img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/supervisor.png" alt="Pinagem do arduino nano">
 
 A figura abaixo representa o hardware do módulo de chão de fábrica implementado no simulador wokwi, o chão de fábrica possui o sensores para observação da produção que são: sensor de temperatura, sensor de inclinação, sensor de presença, sensor de nível de oléo, os motroles para controle da serra de coret horizontal e vertical, motor do ajuste de inclinação e as interfaces para operadores: botão de parada da produção, leds de operação do sistema, buzzer para alarme e display para exibição de blocos cortados.
+
+### ESPECIFICAÇÃO DO SOFTWARE
+
+O software foi desenvolvido em linguagem C utilizando a biblioteca AVR para manipulação direta dos registradores do microcontrolador ATmega328P. A programação foi feita a nível de registradores para proporcionar maior controle sobre o hardware e otimizar o desempenho do sistema. Além disso, foi utilizada a biblioteca Wire.h para comunicação I2C.
+
+O sistema é dividido em dois módulos principais: Supervisor e Chão de Fábrica, cada um com funcionalidades específicas, previamente descritas acima. 
+
+
+
+### ARQUITETURA DO SISTEMA
+
+O sistema foi projetado com uma arquitetura modular, onde cada módulo possui responsabilidades bem definidas. A comunicação entre os módulos é feita exclusivamente via protocolo I2C, garantindo sincronização e troca de informações em tempo real.
+
+#### Fluxo de Operação
+
+* O supervisor ajusta as velocidades dos motores de corte enviando os valores lidos dos potenciômetros para o chão de fábrica.
+* O chão de fábrica monitora continuamente os sensores e controla os motores de corte.
+* Caso algum sensor detecte uma condição crítica (temperatura, inclinação ou presença), a produção é interrompida automaticamente.
+* O supervisor solicita periodicamente os dados do chão de fábrica e exibe no monitor serial.
+* O operador pode parar ou retomar a produção utilizando os botões de interrupção em ambos os módulos.
+
+### DIAGRAMA DE BLOCO
+
+O diagrama abaixo ilustra a interação entre os módulos Supervisor e Chão de Fábrica, bem como os sensores, atuadores e interfaces de comunicação:
+
+<img src="https://github.com/NathielleA/Controle_Planta_Industrial_Embarcados/blob/main/imgs/dg_blc_1.png" alt="descrição de blocos de alto nivel do sistema">
