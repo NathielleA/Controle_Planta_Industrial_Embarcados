@@ -80,6 +80,7 @@ A biblioteca AVR é um conjunto de ferramentas e cabeçalhos fornecidos pela Atm
 
 * Exemplo de uso: Configurar um pino como saída e alternar seu estado:
 
+~~~c
 // filepath: /path/to/main.c
 #include <avr/io.h>
 
@@ -89,6 +90,7 @@ int main(void) {
         PORTB ^= (1 << PB0); // Alterna o estado do pino PB0
     }
 }
+~~~
 
 2. Biblioteca Wire.h:
 A biblioteca Wire.h é usada para comunicação I2C (Inter-Integrated Circuit), um protocolo que permite a comunicação entre dispositivos em um barramento compartilhado. No ATmega328P, ela abstrai a complexidade de configurar os registradores do hardware TWI (Two-Wire Interface), facilitando a comunicação com sensores, displays e outros dispositivos compatíveis com I2C.
