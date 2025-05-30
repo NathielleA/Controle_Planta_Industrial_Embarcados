@@ -8,8 +8,6 @@ O projeto consiste no sistema embarcado composto por um módulo de chão de fáb
 
 Este projeto vai ser desenvolvido utilizando como dispositivo microcontrolador o Atmega328p disponível no arduino nano. A progamação será feita em linguagem C com programação a nível de registradores para se obter a compreeensão da arquitetura de microcontroladores e desenvolvimento de aplicações microcontroladas.
 
-Para simulações foi utilizado o simulador [wokwi](https://wokwi.com/) que disponibiliza o arduino Nano e um conjunto de sensores e outros recursos úteis ao projeto. Também foi utilizado para simulações o [Tinkercad](https://www.tinkercad.com/). Além das simulações o sistema foi implementado em bancada no laboratorio.
-
 ---
 
 ### REQUISITOS
@@ -139,18 +137,24 @@ O diagrama abaixo ilustra a interação entre os módulos Supervisor e Chão de 
 
 (REVISAR ISSO TUDO A BAIXO E VER SE TEM REPETIÇÕES E AJUSTAR)
 
-TESTES E SIMULAÇÕES
-Para validar o funcionamento do sistema, foram realizados testes e simulações utilizando as plataformas Wokwi e Tinkercad. Essas ferramentas permitiram simular o comportamento dos sensores, motores e comunicação I2C, garantindo que o sistema atendesse aos requisitos especificados.
+### TESTES E SIMULAÇÕES
+
+Para validar o funcionamento do sistema, foram realizados testes e simulações, foi utilizado o simulador [wokwi](https://wokwi.com/) que disponibiliza o arduino Nano e um conjunto de sensores e outros recursos úteis ao projeto. Também foi utilizado para simulações o [Tinkercad](https://www.tinkercad.com/). Essas ferramentas permitiram simular o comportamento dos sensores, motores e comunicação I2C, garantindo que o sistema atendesse aos requisitos especificados
 
 Além das simulações, o sistema foi implementado em bancada no laboratório, utilizando dois Arduinos Nano e os componentes descritos na especificação de hardware. Os testes em bancada confirmaram a funcionalidade do sistema em condições reais.
 
-CONCLUSÃO
+### CONCLUSÃO
+
 O projeto Controle Planta Industrial Embarcados demonstrou a viabilidade de implementar um sistema embarcado para controle de produção e segurança em um ambiente industrial. A utilização de programação a nível de registradores proporcionou maior controle sobre o hardware, enquanto a comunicação I2C garantiu a integração eficiente entre os módulos Supervisor e Chão de Fábrica.
 
 O sistema atendeu a todos os requisitos especificados, sendo capaz de:
 
-Monitorar e controlar a produção de forma segura.
-Ajustar dinamicamente as velocidades dos motores.
-Interromper a produção em condições críticas.
-Exibir informações em tempo real no monitor serial e nos displays de 7 segmentos.
+* Monitorar e controlar a produção de forma segura.
+* Ajustar dinamicamente as velocidades dos motores.
+* Interromper a produção em condições críticas.
+* Exibir informações em tempo real no monitor serial e nos displays de 7 segmentos.
+
 Este projeto pode ser expandido para incluir novos sensores, atuadores e funcionalidades, como integração com sistemas de supervisão remota ou armazenamento de dados em nuvem.
+
+### Autores
+
