@@ -1,4 +1,4 @@
-# Controle_Planta_Industrial_Embarcados
+# Controle de Planta Industrial | Sistemas Embarcados
 
 ### PROJETO
 
