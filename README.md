@@ -116,7 +116,7 @@ void loop() {
 }
 ~~~
 
-O sistema é dividido em dois módulos principais: Supervisor e Chão de Fábrica, cada um com funcionalidades específicas, previamente descritas acima.
+O sistema é dividido em dois módulos principais: Supervisor e Chão de Fábrica, cada um com funcionalidades específicas, previamente descritas acima, em seus requisitos.
 
 
 ### ARQUITETURA DO SISTEMA
