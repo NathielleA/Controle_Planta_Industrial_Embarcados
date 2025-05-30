@@ -97,6 +97,7 @@ A biblioteca Wire.h é usada para comunicação I2C (Inter-Integrated Circuit), 
 
 * Exemplo de uso: Comunicação com um sensor I2C:
 
+~~~c
 // filepath: /path/to/main.c
 #include <Wire.h>
 
@@ -113,6 +114,7 @@ void loop() {
         int data = Wire.read(); // Lê os dados recebidos
     }
 }
+~~~
 
 O sistema é dividido em dois módulos principais: Supervisor e Chão de Fábrica, cada um com funcionalidades específicas, previamente descritas acima.
 
